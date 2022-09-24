@@ -47,6 +47,14 @@ const App = (state) => {
         </div>
       
       </div>
+
+      <div class="grid-item" style="margin-top:40px;">
+      <p><b>Mission</b></p>
+    <p>The Mars Science Laboratory mission's Curiosity rover landed in Mars' Gale Crater the evening of August 5, 2012 PDT (morning of August 6 EDT) using a series of complicated landing maneuvers never before attempted. The specialized landing sequence, which employed a giant parachute, a jet-controlled descent vehicle and a bungee-like apparatus called a "sky crane," was devised because tested landing techniques used during previous rover missions could not safely accommodate the much larger and heavier rover.
+
+    Curiosity's mission is to determine whether the Red Planet ever was habitable to microbial life. The rover, which is about the size of a MINI Cooper, is equipped with 17 cameras and a robotic arm containing a suite of specialized laboratory-like tools and instruments.
+    </p>
+      </div>
          
         </section>
       </main>

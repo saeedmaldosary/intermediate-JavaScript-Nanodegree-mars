@@ -22,24 +22,35 @@ const App = (state) => {
 
   return `
         <header>
-        <h1>Mars Dashboard</h1></header>
-        <main>
-            ${Greeting(store.user.name)}
-            <section>
-                <h3>Put things on the page!</h3>
-                <p>Here is an example section.</p>
-                <p>
-                    One of the most popular websites at NASA is the Astronomy Picture of the Day. In fact, this website is one of
-                    the most popular websites across all federal agencies. It has the popular appeal of a Justin Bieber video.
-                    This endpoint structures the APOD imagery and associated metadata so that it can be repurposed for other
-                    applications. In addition, if the concept_tags parameter is set to True, then keywords derived from the image
-                    explanation are returned. These keywords could be used as auto-generated hashtags for twitter or instagram feeds;
-                    but generally help with discoverability of relevant imagery.
-                </p>
-                ${ImageOfTheDay(apod)}
-            </section>
-        </main>
-        <footer></footer>
+        <h1>Mars Dashboard 🌌</h1>
+      </header>
+      <main>
+        <section>
+        <div class="grid-container">
+        <div class="grid-item">
+          <img src="assets/images/Opportunity.png" alt="Cinque Terre" >
+    
+          <p>Opportunity</p>
+        
+        </div>
+        <div class="grid-item">
+          <img src="assets/images/Curiosity.png" alt="Cinque Terre" >
+    
+          <p>Curiosity</p>
+        
+        </div>
+        <div class="grid-item">
+          <img src="assets/images/Spirit.png" alt="Cinque Terre" >
+    
+          <p>Spirit</p>
+      
+        </div>
+      
+      </div>
+         
+        </section>
+      </main>
+      <footer></footer>
     `;
 };
 

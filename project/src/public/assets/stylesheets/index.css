@@ -33,8 +33,25 @@ section {
 
 .grid-item p{
   font-size: 20px;
- 
 }
+
+.table-item {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 90px;
+}
+
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+  font-size: 20px;
+}
+
+th, td {
+  background-color: #edf2f7;
+}
+
 
 img {
   max-width: 100%;
@@ -70,8 +87,9 @@ footer {
     grid-template-columns: 1fr  1fr;
     column-gap: 50px;
     row-gap: 50px;
-
   }
+
+ 
 }
 
 /* -------------------  LARGE SCREENS  -------------- */
@@ -85,6 +103,5 @@ footer {
   .grid-container {
     column-gap: 50px;
     grid-template-columns: 1fr  1fr 1fr;
-
   }
 }

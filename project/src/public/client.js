@@ -109,6 +109,7 @@ function roverInfo(response, showResultContainerFn) {
     const info = response.latest_photos[0].rover[neededInfo[i]];
     objCopy.roverData[neededInfo[i]] = info ? info : "No result";
   }
+  objCopy.roverData["images"] = [];
   response.latest_photos.map((photo) => {
     objCopy.roverData["images"].push(photo.img_src);
   });

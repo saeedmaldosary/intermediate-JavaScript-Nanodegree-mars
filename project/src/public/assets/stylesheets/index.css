@@ -35,6 +35,10 @@ section {
   font-size: 20px;
 }
 
+.marginTop {
+  margin-top: 40px;
+}
+
 .table-item {
   display: flex;
     justify-content: center;

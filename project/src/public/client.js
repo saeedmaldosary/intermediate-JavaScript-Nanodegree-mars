@@ -1,5 +1,6 @@
 let store = {
   apod: "",
+  rovers: ["Curiosity", "Opportunity", "Spirit"],
 };
 
 const root = document.getElementById("root");
@@ -18,11 +19,10 @@ window.addEventListener("load", () => {
 });
 
 function displayRovers() {
-  const roversName = ["Opportunity", "Curiosity", "Spirit"];
-  var results = ``;
-
-  roversName.map((name) => {
-    results += `<div class="grid-item">
+  let results = ``;
+  store.rovers.map((name) => {
+    store.selectedRover = name;
+    results += `<div class="grid-item" onclick="roverInfo('${name}')" style="cursor: pointer;">
     <img src="assets/images/${name}.png" alt="${name}" >
     <p>${name}</p>
   </div>`;
@@ -62,7 +62,7 @@ const App = (state) => {
         <div class="grid-container">
            ${displayRovers()}
         </div>
-        <div class="grid-container" style="row-gap:0px">
+        <div class="grid-container" id="roverInfo" style="row-gap: 0px; display: none">
             <div class="grid-item table-item" style="margin-top:40px;">
               <table style="width:100%">
                   <tr>
@@ -90,6 +90,11 @@ const App = (state) => {
     <footer></footer>
     `;
 };
+
+function roverInfo(roverName) {
+  document.getElementById("roverInfo").style.display = "grid";
+  console.log(roverName);
+}
 
 async function getRoverInfo(roverName) {
   let roverInfo;

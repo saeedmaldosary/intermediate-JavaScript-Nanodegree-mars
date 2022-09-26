@@ -29,7 +29,7 @@ window.addEventListener("load", () => {
 function displayRovers() {
   let results = ``;
   store.rovers.map((name) => {
-    results += `<div class="grid-item" onclick="getRoverInfo('${name}')" style="cursor: pointer;">
+    results += `<div class="grid-item" onclick="getRoverInfo('${name}',roverInfo)" style="cursor: pointer;">
     <img src="assets/images/${name}.png" alt="${name}" >
     <p>${name}</p>
   </div>`;
@@ -60,7 +60,7 @@ function roverMission(roverName) {
 }
 
 // Create page content
-const App = (state) => {
+const App = () => {
   return `
     <header>
       <h1>Mars Dashboard 🌌</h1>
@@ -93,17 +93,16 @@ const App = (state) => {
               </p>
             </div>
         </div>
-        <div class="grid-container">
+        <div class="grid-container" id="roverPhotos">
            ${displayRoverLatestPhotos()}
         </div>
       </section>
     </main>
-    <footer></footer>
     `;
 };
 
-// Prepare data and show rover info
-function roverInfo(response) {
+// Prepare data and show rover info - Higher-Order Function
+function roverInfo(response, showResultContainerFn) {
   let objCopy = { ...store };
   let neededInfo = ["landing_date", "launch_date", "status"];
   for (let i = 0; i < neededInfo.length; i++) {
@@ -114,7 +113,18 @@ function roverInfo(response) {
     objCopy.roverData["images"].push(photo.img_src);
   });
   updateStore(store, objCopy);
-  document.getElementById("roverInfo").style.display = "grid";
+  showResultContainerFn(true);
+}
+
+// Function to hide and display results container
+function showResultContainer(show) {
+  if (show === true) {
+    document.getElementById("roverInfo").style.display = "grid";
+    document.getElementById("roverPhotos").style.display = "grid";
+  } else {
+    document.getElementById("roverInfo").style.display = "none";
+    document.getElementById("roverPhotos").style.display = "none";
+  }
 }
 
 // Dynamic function to show rover latest photos
@@ -129,12 +139,13 @@ function displayRoverLatestPhotos() {
   return results;
 }
 
-// Get result from API
-async function getRoverInfo(roverName) {
+// Get result from API - Higher-Order Function
+async function getRoverInfo(roverName, roverInfoFn) {
   try {
+    showResultContainer(false);
     let response = await fetch("http://localhost:3000/roverInfo/" + roverName);
     response = await response.json();
-    roverInfo(response);
+    roverInfoFn(response, showResultContainer);
   } catch (e) {
     console.error(e);
   }

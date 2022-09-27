@@ -103,15 +103,16 @@ const App = () => {
 
 // Prepare data and show rover info - Higher-Order Function
 function roverInfo(response, showResultContainerFn) {
-  let objCopy = { ...store };
+  let objCopy = Immutable.Map({ ...store });
+  objCopy = objCopy.get("roverData");
   const neededInfo = ["landing_date", "launch_date", "status"];
   for (let i = 0; i < neededInfo.length; i++) {
     const info = response.latest_photos[0].rover[neededInfo[i]];
-    objCopy.roverData[neededInfo[i]] = info ? info : "No result";
+    objCopy[neededInfo[i]] = info ? info : "No result";
   }
-  objCopy.roverData["images"] = [];
+  objCopy["images"] = [];
   response.latest_photos.map((photo) => {
-    objCopy.roverData["images"].push(photo.img_src);
+    objCopy["images"].push(photo.img_src);
   });
   updateStore(store, objCopy);
   showResultContainerFn(true);

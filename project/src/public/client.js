@@ -104,7 +104,7 @@ const App = () => {
 // Prepare data and show rover info - Higher-Order Function
 function roverInfo(response, showResultContainerFn) {
   let objCopy = { ...store };
-  let neededInfo = ["landing_date", "launch_date", "status"];
+  const neededInfo = ["landing_date", "launch_date", "status"];
   for (let i = 0; i < neededInfo.length; i++) {
     const info = response.latest_photos[0].rover[neededInfo[i]];
     objCopy.roverData[neededInfo[i]] = info ? info : "No result";

@@ -1,4 +1,4 @@
-# Mars Rover Dashboard
+# Mars Rover Dashboard ☄
 
 ![image](https://user-images.githubusercontent.com/52779920/194505742-693ec81d-bd96-4609-9fd4-2a7795568a3a.png)
 
